@@ -30,7 +30,7 @@ $cell_height: 32px;
 
 		.mx-icon-calendar,
 		.mx-icon-clear {
-			color: var(--color-text-lighter);
+			color: var(--color-text-maxcontrast);
 		}
 	}
 
@@ -97,7 +97,7 @@ $cell_height: 32px;
 		thead > tr > th {
 			text-align: center;
 			opacity: $opacity_disabled;
-			color: var(--color-text-lighter);
+			color: var(--color-text-maxcontrast);
 		}
 
 		// Override table rule from server
@@ -139,7 +139,7 @@ $cell_height: 32px;
 			}
 			&.not-current-month {
 				opacity: $opacity_disabled;
-				color: var(--color-text-lighter);
+				color: var(--color-text-maxcontrast);
 				&:hover,
 				&:focus {
 					opacity: $opacity_full;
@@ -159,7 +159,7 @@ $cell_height: 32px;
 			}
 			&.disabled {
 				opacity: $opacity_disabled;
-				color: var(--color-text-lighter);
+				color: var(--color-text-maxcontrast);
 				border-radius: 0;
 				background-color: var(--color-background-darker);
 			}
@@ -234,7 +234,7 @@ $cell_height: 32px;
 		cursor: pointer;
 		text-decoration: none;
 		opacity: $opacity_disabled;
-		color: var(--color-text-lighter);
+		color: var(--color-text-maxcontrast);
 		border-radius: $cell_height;
 		line-height: $cell_height - 12px; // padding minus 2px for better visual
 		// Mouse feedback

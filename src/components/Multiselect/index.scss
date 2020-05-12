@@ -129,14 +129,14 @@
 			background-color: var(--color-main-background);
 			cursor: pointer;
 			line-height: 18px; // 32px - 2*6px (padding) - 2*1px (border)
-			color: var(--color-text-lighter); // like the input
+			color: var(--color-text-maxcontrast); // like the input
 		}
 		/* displayed text if tag limit reached */
 		.multiselect__strong,
 		.multiselect__limit {
 			flex: 0 0 auto;
 			line-height: 20px;
-			color: var(--color-text-lighter);
+			color: var(--color-text-maxcontrast);
 			display: inline-flex;
 			align-items: center;
 			opacity: $opacity_normal;
@@ -204,7 +204,7 @@
 				display: inline-flex;
 				align-items: center;
 				background-color: transparent;
-				color: var(--color-text-lighter);
+				color: var(--color-text-maxcontrast);
 				width: 100%;
 				/* selected checkmark icon */
 				&::before {

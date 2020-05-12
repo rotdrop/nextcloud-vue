@@ -158,7 +158,7 @@ export default {
 		justify-content: center;
 		min-width: 0;
 		&--lineone {
-			color: var(--color-text-light);
+			color: var(--color-main-text);
 		}
 		&--linetwo {
 			opacity: $opacity_normal;
