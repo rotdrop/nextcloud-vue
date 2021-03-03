@@ -201,6 +201,7 @@ const allowedChildren = [
 	'ActionSeparator',
 	'ActionText',
 	'ActionTextEditable',
+	'ActionCaption',
 ]
 
 const focusableSelector = '.focusable'
