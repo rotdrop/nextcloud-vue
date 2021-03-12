@@ -63,6 +63,7 @@ import PopoverMenu from './PopoverMenu'
 import RichContenteditable from './RichContenteditable'
 import SettingsSection from './SettingsSection'
 import UserBubble from './UserBubble'
+import AppContentListItem from './AppContentListItem'
 
 export {
 	ActionButton,
@@ -78,6 +79,7 @@ export {
 	AppContent,
 	AppContentDetails,
 	AppContentList,
+	AppContentListItem,
 	AppNavigation,
 	AppNavigationCaption,
 	AppNavigationCounter,

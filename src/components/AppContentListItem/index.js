@@ -23,4 +23,3 @@
 import AppContentListItem from './AppContentListItem'
 
 export default AppContentListItem
-export { AppContentListItem }
