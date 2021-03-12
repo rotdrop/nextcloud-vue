@@ -52,7 +52,7 @@
 						</span>
 					</div>
 					<div class="acli-content__line-two">
-						<span class="acli-content__line-two__subtitle">
+						<span v-if="hasSubtitle" class="acli-content__line-two__subtitle">
 							<slot name="subtitle" />
 						</span>
 						<span v-if="!displayActions" class="acli-content__line-two__counter">
@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import Actions from '@nextcloud/vue/dist/Components/Actions'
+import Actions from '../Actions'
 
 export default {
 	name: 'AppContentListItem',
@@ -167,6 +167,11 @@ export default {
 		conversationSettingsAriaLabel() {
 			return t('spreed', 'Settings for conversation "{conversationName}"', { conversationName: this.title })
 		},
+
+		// Check if the subtitle slot is populated
+		hasSubtitle() {
+			return !!this.$slots.subtitle
+		},
 	},
 	methods: {
 		// forward click event
@@ -217,11 +222,11 @@ export default {
 
 .acli_wrapper{
 	position: relative;
-	margin: 0 4px 0 8px;
+	width: 100%;
 	.actions {
 		position: absolute;
 		top: 4px;
-		right: 4px;
+		right: 12px;
 	}
 }
 
@@ -236,6 +241,7 @@ export default {
 	height: 64px;
 	border-radius: 16px;
 	margin: 2px 0;
+	width: 100%;
 	cursor: pointer;
 	&:hover,
 	&:focus  {
@@ -249,14 +255,15 @@ export default {
 
 	&-content {
 		display: flex;
+		width: calc(100% - 44px);
 		justify-content: space-between;
-		width: 210px;
-		// same as the acli left padding for
-		// nice visual balance around the avatar
-		margin-left: 8px;
+		padding: 0 8px;
+
 		&__main {
 			flex: 1 1 auto;
-			width: calc(100% - 44px);
+			flex-direction: column;
+			width: 100%;
+			margin: auto 0;
 		}
 
 		&__line-one {
@@ -264,6 +271,7 @@ export default {
 			align-items: center;
 			justify-content: space-between;
 			white-space: nowrap;
+			margin: 0 auto;
 
 			&__title {
 				overflow: hidden;
@@ -296,6 +304,24 @@ export default {
 			align-self: center;
 			justify-content: center;
 		}
+	}
+}
+
+// Counter
+::v-deep .counter {
+	font-size: 12px;
+	/*
+	 * Always add the bubble
+	 */
+	padding: 4px 6px !important;
+	border-radius: 10px;
+
+	&:not(.app-navigation-entry__counter--highlighted) {
+		background-color: var(--color-background-darker);
+	}
+
+	span {
+		padding: 2px 6px;
 	}
 }
 
