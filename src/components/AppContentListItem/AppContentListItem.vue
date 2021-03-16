@@ -68,7 +68,8 @@
 					<Actions
 						ref="actions"
 						menu-align="right"
-						:aria-label="conversationSettingsAriaLabel">
+						:aria-label="conversationSettingsAriaLabel"
+						@update:open="handleActionsUpdateOpen">
 						<slot
 							name="actions" />
 					</Actions>
@@ -266,6 +267,7 @@ export default {
 	margin: 2px 0;
 	width: 100%;
 	cursor: pointer;
+	transition: background-color 200ms ease-in-out;
 	&:hover,
 	&:focus  {
 		background-color: var(--color-background-hover);
@@ -346,6 +348,10 @@ export default {
 	span {
 		padding: 2px 6px;
 	}
+}
+
+.bold {
+	font-weight: bold;
 }
 
 </style>
