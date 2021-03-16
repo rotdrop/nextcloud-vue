@@ -26,7 +26,7 @@
 		<a
 			:id="anchorId"
 			ref="acli"
-			:class="{ 'active' : isActive }"
+			:class="{ 'active' : isActive, 'bold': bold }"
 			href="#"
 			class="acli"
 			:aria-label="conversationLinkAriaLabel"
@@ -125,6 +125,14 @@ export default {
 		anchorId: {
 			type: String,
 			default: '',
+		},
+
+		/**
+		 * Bold title and subtitle
+		 */
+		bold: {
+			type: Boolean,
+			default: false,
 		},
 	},
 
