@@ -280,14 +280,14 @@ export default {
 
 	&-content {
 		display: flex;
-		width: calc(100% - 44px);
+		flex: 1 1 auto;
 		justify-content: space-between;
 		padding: 0 8px;
 
 		&__main {
 			flex: 1 1 auto;
 			flex-direction: column;
-			width: 100%;
+			width: 0;
 			margin: auto 0;
 		}
 
@@ -328,6 +328,7 @@ export default {
 			flex: 0 0 auto;
 			align-self: center;
 			justify-content: center;
+
 		}
 	}
 }
