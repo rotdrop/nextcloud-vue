@@ -129,11 +129,15 @@ export default {
 
 	data() {
 		return {
-			linkIsFocused: false,
+			hovered: false,
+			focused: false,
 			displayActions: false,
+			menuOpen: false,
 		}
 	},
+
 	computed: {
+
 		isActive() {
 			return this.to && this.$store.getters.getToken() === this.to.params.token
 		},
@@ -141,9 +145,11 @@ export default {
 		hasDetails() {
 			return (this.details !== '' && !this.$slots.counter)
 		},
+
 		hasActions() {
 			return (!!this.$slots.actions)
 		},
+
 		// This is used to decide which outer element type to use
 		// li or router-link
 		navElement() {
@@ -173,7 +179,19 @@ export default {
 			return !!this.$slots.subtitle
 		},
 	},
+
+	watch: {
+		menuOpen(newValue) {
+			console.debug('menuopen', newValue)
+			// A click outside both the menu and the root element hides the actions again
+			if (!newValue && !this.hovered) {
+				this.displayActions = false
+			}
+		},
+	},
+
 	methods: {
+
 		// forward click event
 		onClick(event) {
 			this.$emit('click', event)
@@ -184,12 +202,12 @@ export default {
 		},
 
 		handleFocus() {
-			this.linkIsFocused = true
+			this.focused = true
 			this.showActions()
 		},
 
 		handleBlur(e) {
-			this.linkIsFocused = false
+			this.focused = false
 		},
 
 		showActions() {
@@ -199,20 +217,25 @@ export default {
 		},
 
 		handleMouseleave() {
-			this.displayActions = false
+			if (!this.menuOpen) {
+				this.displayActions = false
+			}
 		},
 
 		handleTab(e) {
-			if (this.linkIsFocused && this.hasActions) {
+			if (this.focused && this.hasActions) {
 				console.debug('preventdefault')
 				e.preventDefault()
 				this.$refs.actions.$refs.menuButton.focus()
-				this.linkIsFocused = false
+				this.focused = false
 			} else {
 				this.displayActions = false
 				this.$refs.actions.$refs.menuButton.blur()
 			}
+		},
 
+		handleActionsUpdateOpen(e) {
+			this.menuOpen = e
 		},
 	},
 }
