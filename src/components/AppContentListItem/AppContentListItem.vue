@@ -26,7 +26,7 @@
 		<a
 			:id="anchorId"
 			ref="acli"
-			:class="{ 'active' : isActive, 'bold': bold }"
+			:class="{ 'active' : isActive }"
 			href="#"
 			class="acli"
 			:aria-label="conversationLinkAriaLabel"
@@ -42,16 +42,19 @@
 			<div class="acli-content">
 				<div class="acli-content__main">
 					<div class="acli-content__line-one">
-						<span class="acli-content__line-one__title">
+						<span
+							class="acli-content__line-one__title"
+							:class="{'bold': bold}">
 							{{ title }}
 						</span>
 						<span
-							v-if="{hasDetails}"
+							v-if="hasDetails && !displayActions"
 							class="acli-content__line-one__details">
 							{{ details }}
 						</span>
 					</div>
-					<div class="acli-content__line-two">
+					<div class="acli-content__line-two"
+						:class="{'bold': bold}">
 						<span v-if="hasSubtitle" class="acli-content__line-two__subtitle">
 							<slot name="subtitle" />
 						</span>
@@ -152,7 +155,7 @@ export default {
 		},
 
 		hasDetails() {
-			return (this.details !== '' && !this.$slots.counter)
+			return this.details !== ''
 		},
 
 		hasActions() {
@@ -312,7 +315,11 @@ export default {
 				cursor: pointer;
 				text-overflow: ellipsis;
 				color: var(--color-main-text);
+			}
 
+			&__details {
+				color: var(--color-text-lighter);
+				margin: 0 8px;
 			}
 		}
 
