@@ -18,6 +18,38 @@
   - You should have received a copy of the GNU Affero General Public License
   - along with this program. If not, see <http://www.gnu.org/licenses/>.
 -->
+<docs>
+
+# Usage
+```
+<AppContentListItem
+		:title="'Title of the element'"
+		:bold="false"
+		:details="'One hour ago'">
+		<template v-slot:icon>
+			<avatar size="44" user="janedoe" display-name="Jane Doe" />
+		</template>
+		<template v-slot:subtitle>
+			In this slot you can put both text and other components such as icons
+		</template>
+		<AppNavigationCounter
+			slot="counter">
+			7
+		</AppNavigationCounter>
+		<template #actions>
+			<ActionButton>
+				Button one
+			</ActionButton>
+			<ActionButton>
+				Button two
+			</ActionButton>
+			<ActionButton>
+				Button three
+			</ActionButton>
+		</template>
+	</AppContentListItem>
+```
+</docs>
 
 <template>
 	<nav-element
@@ -94,12 +126,13 @@ export default {
 
 	props: {
 		/**
-		 * The details text displayed in the upper right part
+		 * The details text displayed in the upper right part of the component
 		 */
 		details: {
 			type: String,
 			default: '',
 		},
+
 		/**
 		 * Title
 		 */
@@ -107,6 +140,7 @@ export default {
 			type: String,
 			required: true,
 		},
+
 		/**
 		* Pass in `true` if you want the matching behaviour to
 		* be non-inclusive: https://router.vuejs.org/api/#exact
@@ -115,6 +149,7 @@ export default {
 			type: Boolean,
 			default: false,
 		},
+
 		/**
 		* The route for the router link.
 		*/
@@ -122,6 +157,7 @@ export default {
 			type: [String, Object],
 			default: '',
 		},
+
 		/**
 		 * Id for the <a> element
 		 */
@@ -131,7 +167,7 @@ export default {
 		},
 
 		/**
-		 * Bold title and subtitle
+		 * Boldens title and subtitle
 		 */
 		bold: {
 			type: Boolean,
@@ -197,6 +233,7 @@ export default {
 	},
 
 	watch: {
+
 		menuOpen(newValue) {
 			console.debug('menuopen', newValue)
 			// A click outside both the menu and the root element hides the actions again
@@ -204,6 +241,10 @@ export default {
 				this.displayActions = false
 			}
 		},
+	},
+
+	mounted() {
+		console.debug('this.route', this.route, 'this.to', this.to)
 	},
 
 	methods: {
