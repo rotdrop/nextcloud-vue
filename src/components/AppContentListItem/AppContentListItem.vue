@@ -26,7 +26,7 @@
 		<a
 			:id="anchorId"
 			ref="acli"
-			:class="{ 'active' : isActive }"
+			:class="{ 'active' : active }"
 			href="#"
 			class="acli"
 			:aria-label="conversationLinkAriaLabel"
@@ -137,6 +137,14 @@ export default {
 			type: Boolean,
 			default: false,
 		},
+
+		/**
+		 * Toggle the active state of the component.
+		 */
+		active: {
+			type: Boolean,
+			default: false,
+		},
 	},
 
 	data() {
@@ -149,10 +157,6 @@ export default {
 	},
 
 	computed: {
-
-		isActive() {
-			return this.to && this.$store.getters.getToken() === this.to.params.token
-		},
 
 		hasDetails() {
 			return this.details !== ''
